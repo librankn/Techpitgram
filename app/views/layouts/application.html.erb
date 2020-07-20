@@ -10,8 +10,23 @@
   </head>
 
   <body>
+    <div id="wrapper">
+      <%= render 'partial/navbar' if current_user %>
 
-    <%= render 'partical/navbar' %>
-    <%= yield %>
+      <% if flash[:notice] %>
+        <div class="aleart aleart-info">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:aleart] %>
+        <div class="aleart aleart-danger">
+          <%= flash[:aleart]%>
+        </div>
+      <% end %>
+
+      <%= yield %>
+
+      <%= render 'partial/footer' %>
+    </div>
   </body>
 </html>
